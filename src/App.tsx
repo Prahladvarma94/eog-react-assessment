@@ -8,6 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import NowWhat from './components/NowWhat';
+import Body from './components/Body';
+import client from './apollo';
+import { ApolloProvider } from 'react-apollo';
+
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -27,13 +31,15 @@ const theme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
+    <ApolloProvider client={client}>
     <Provider store={store}>
       <Wrapper>
         <Header />
-        <NowWhat />
+        <Body />
         <ToastContainer />
       </Wrapper>
     </Provider>
+    </ApolloProvider>
   </MuiThemeProvider>
 );
 
